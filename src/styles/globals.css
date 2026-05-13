@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sora), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+:root {
+  --ink:     #0d0f12;
+  --surface: #13161b;
+  --panel:   #1a1e26;
+  --border:  #252b36;
+  --dim:     #334155;
+  --muted:   #64748b;
+  --text:    #e2e8f0;
+  --accent:  #00d4aa;
+  --accent2: #0ea5e9;
+  --warn:    #f59e0b;
+  --danger:  #ef4444;
+  --success: #22c55e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--ink);
+  color: var(--text);
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--panel); }
+::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }
+
+/* Inputs */
+input, select, textarea {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  padding: 8px 10px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+}
+input::placeholder { color: var(--dim); }
+
+/* Pulse animation for live indicators */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+.blink { animation: pulse 1.4s ease-in-out infinite; }
+
+/* Fade-in on mount */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.25s ease-out; }
